@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "chai": "^4.1.2",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "mocha": "^5.2.0"
   },
   "license": "MIT",
   "bugs": {
