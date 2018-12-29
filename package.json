@@ -1,10 +1,12 @@
 {
   "name": "soft-assert",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Soft Asserts JSON, Array and other data",
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "assertion-helper.js",
+    "constant.js"
   ],
   "repository": {
     "type": "git",
