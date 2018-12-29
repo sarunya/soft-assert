@@ -1,6 +1,6 @@
 {
   "name": "soft-assert",
-  "version": "0.1.3",
+  "version": "0.1.6",
   "description": "Soft Asserts JSON, Array and other data",
   "main": "index.js",
   "files": [
