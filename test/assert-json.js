@@ -43,6 +43,19 @@ describe("test", function () {
         jsonAssertion.deepAssert(actual, expected, "assertion error for deepAssert3");
     })
 
+    it.only("softAssert test", function() {
+        let actual = _.cloneDeep(json);
+        let expected = _.cloneDeep(json);
+        jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 1");
+        expected.glossary.GlossDiv.GlossList2 = "something";
+        jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 2", ["GlossList2"]);
+        expected.glossary.GlossDiv.GlossList.GlossEntry.GlossDef.GlossSeeAlso = ["some2"];
+        delete expected.glossary.GlossDiv.GlossList.GlossEntry.GlossDef.para;
+        jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 3");
+        jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 4");
+        jsonAssertion.softAssertAll();
+    })
+
     it("deepContains test", function() {
         let actual = _.cloneDeep(json);
         let expected = _.cloneDeep(json);

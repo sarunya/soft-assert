@@ -1,5 +1,5 @@
 # soft-assert
-Soft Asserts the Json, Array and other data types
+Soft Asserts the Json, Array and other data types. It throws an AssertionError when assertion fails in mocha test
 
 ## Functions supported : 
 
