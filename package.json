@@ -5,8 +5,7 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "assertion-helper.js",
-    "constant.js"
+    "lib"
   ],
   "repository": {
     "type": "git",
