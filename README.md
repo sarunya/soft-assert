@@ -1,18 +1,20 @@
 # soft-assert
 Soft Asserts the Json, Array and other data types
 
-Functions supported : 
+## Functions supported : 
 
-deepAssert(actual, expected, msg, ignoreKeys)
-softAssert(actual, expected, msg, ignoreKeys)
-deepContains(actual, expected, msg, ignoreKeys)
-softContains(actual, expected, msg, ignoreKeys)
-deepAssertKey(actual, expected, key, msg, ignoreKeys)
-softAssertKey(actual, expected, key, msg, ignoreKeys)
-deepContainstKey(actual, expected, key, msg, ignoreKeys)
-softContainsKey(actual, expected, key, msg, ignoreKeys)
-deeptTrue(value, msg)
-softTrue(value, msg)
-deepAssertKeyAbsence(actual, key, msg)
-softAssertKeyAbsence(actual, key, msg)
-softAssertAll()
+```
+1.  deepAssert(actual, expected, msg, ignoreKeys)
+2.  softAssert(actual, expected, msg, ignoreKeys)
+3.  deepContains(actual, expected, msg, ignoreKeys)
+4.  softContains(actual, expected, msg, ignoreKeys)
+5.  deepAssertKey(actual, expected, key, msg, ignoreKeys)
+6.  softAssertKey(actual, expected, key, msg, ignoreKeys)
+7.  deepContainstKey(actual, expected, key, msg, ignoreKeys)
+8.  softContainsKey(actual, expected, key, msg, ignoreKeys)
+9.  deeptTrue(value, msg)
+10. softTrue(value, msg)
+11. deepAssertKeyAbsence(actual, key, msg)
+12. softAssertKeyAbsence(actual, key, msg)
+13. softAssertAll()
+```
