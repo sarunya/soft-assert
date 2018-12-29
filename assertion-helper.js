@@ -1,6 +1,6 @@
 const assert = require("chai").assert;
 const _ = require("lodash");
-const constant = require("./../common/constant");
+const constant = require("./constant");
 
 /**
  * Asserts json, array, array of json and other primitive types

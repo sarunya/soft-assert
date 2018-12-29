@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const AssertionHelper = require("./lib/helper/assertion-helper")
+const AssertionHelper = require("./assertion-helper")
 
 /**
  * Asserts json, array, array of json and other primitive types
