@@ -1,4 +1,4 @@
-const Assertion = require("./../index")
+const jsonAssertion = require("./../index")
 const _ = require("lodash");
 
 
@@ -6,9 +6,7 @@ let arr = [1, 2];
 
 
 describe("test", function () {
-    jsonAssertion = new Assertion();
     before(function () {
-        const me = this;
     })
 
     let json = {
