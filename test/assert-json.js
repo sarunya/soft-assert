@@ -43,7 +43,7 @@ describe("test", function () {
         jsonAssertion.deepAssert(actual, expected, "assertion error for deepAssert3");
     })
 
-    it.only("softAssert test", function() {
+    it("softAssert test", function() {
         let actual = _.cloneDeep(json);
         let expected = _.cloneDeep(json);
         jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 1");

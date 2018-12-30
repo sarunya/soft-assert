@@ -18,3 +18,27 @@ Soft Asserts the Json, Array and other data types. It throws an AssertionError w
 12. softAssertKeyAbsence(actual, key, msg)
 13. softAssertAll()
 ```
+
+## Example Test for Soft Assert
+
+Using softAssert, softContains, softAssertKey, softTrue, softAssertKeyAbsence asserts the value but does not throws the AssertionError, until softAssertAll is called.
+
+softAssertAll - throws the error of all the previous soft assertion's error if any
+
+# Example : 
+
+```
+it("softAssert test", function() {
+        let actual = _.cloneDeep(json);
+        let expected = _.cloneDeep(json);
+        jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 1");
+        expected.glossary.GlossDiv.GlossList2 = "something";
+        jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 2", ["GlossList2"]);
+        expected.glossary.GlossDiv.GlossList.GlossEntry.GlossDef.GlossSeeAlso = ["some2"];
+        delete expected.glossary.GlossDiv.GlossList.GlossEntry.GlossDef.para;
+        jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 3");
+        jsonAssertion.softAssert(actual, expected, "assertion error for softAssert 4");
+        jsonAssertion.softAssertAll();
+})
+```
+

@@ -17,7 +17,9 @@
     "json assert",
     "json",
     "array assert",
-    "array"
+    "array",
+    "mocha soft",
+    "mocha"
   ],
   "author": {
     "name": "Sarunya Durai",
