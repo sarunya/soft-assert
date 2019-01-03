@@ -31,6 +31,46 @@ describe("test", function () {
             }
         }
     };
+
+    it('deep assert json array test', function() {
+        let actual = [
+            {
+                "name": "name1",
+                "value": "value1"
+            },
+            {
+                "name": "name4",
+                "value": "value14"
+            },
+            {
+                "name": "name2",
+                "value": "value2"
+            },
+            {
+                "name": "name13",
+                "value": "value3"
+            }
+        ];
+        let expected = [
+            {
+                "name": "name1",
+                "value": "value1"
+            },
+            {
+                "name": "name2",
+                "value": "value2"
+            },
+            {
+                "name": "name13",
+                "value": "value3"
+            },
+            {
+                "name": "name4",
+                "value": "value14"
+            }
+        ];
+        jsonAssertion.deepAssertJsonArray(actual, expected, ["value", "name"], "not equal");
+    })
     
     it("deepAssert test", function() {
         let actual = _.cloneDeep(json);

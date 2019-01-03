@@ -25,6 +25,8 @@ Using softAssert, softContains, softAssertKey, softTrue, softAssertKeyAbsence as
 
 softAssertAll - throws the error of all the previous soft assertion's error if any
 
+[Sample Test Link](https://github.com/sarunya/soft-assert/blob/master/test/assert-json.js)
+
 # Example : 
 
 ```
@@ -42,3 +44,6 @@ it("softAssert test", function() {
 })
 ```
 
+# Sample Test Failure Screenshot :
+
+![Alt text](/resource/image/testfailure_screenshot.png "Test Failure")
