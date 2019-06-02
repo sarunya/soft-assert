@@ -124,4 +124,15 @@ describe("test", function () {
         delete expected.glossary.GlossDiv.GlossList.GlossEntry.GlossDef.para;
         jsonAssertion.deepContainstKey(actual, expected.glossary.GlossDiv.GlossList.GlossEntry.GlossDef.para, "glossary.GlossDiv.GlossList.GlossEntry.GlossDef.para", "assertion error for deepAssertKey 2");
     })
+
+    it("assert json", ()=> {
+        //jsonAssertion.deepAssertType([1,2,3, 5], [1,2,3, 4],"not equal");
+        jsonAssertion.deepAssertType([1,2,3, 5], "<array>","not equal");
+        jsonAssertion.deepAssertType(1, "<number>","not equal");
+        jsonAssertion.deepAssertType("", "<string>","not equal");
+        jsonAssertion.deepAssertType({}, "<json>","not equal");
+        jsonAssertion.deepAssertType({a:1}, {a:"<number>"},"not equal");
+        jsonAssertion.deepAssertType([{a:1, b:[]}, {}], [{a:"<number>", b:"<array>"}, "<json>"],"not equal");
+        jsonAssertion.deepAssertType([{a:1, b:[]}, {}], [{a:"<number>", b:"<array>"}, "<json>"],"not equal");
+    })
 })
