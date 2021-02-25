@@ -1,5 +1,6 @@
 const jsonAssertion = require("./../index")
 const _ = require("lodash");
+const { AssertionError } = require("chai");
 
 
 let arr = [1, 2];
@@ -197,12 +198,97 @@ describe("test", function () {
                 "value": "value14"
             }
         ];
-        console.log(JSON.stringify(expected))
         jsonAssertion.softContainsJsonArray(actual, expected, ["value", "name"], "not equal");
         jsonAssertion.softContains(actual, expected, "not equal by soft contains - failure");
         expected[1].value="Saru2";
         jsonAssertion.softContainsJsonArray(actual, expected, ["value", "name"], "not equal");
         jsonAssertion.softContains(actual, expected, "not equal by soft contains");
         jsonAssertion.softAssertAll();
+    })
+
+    describe("Assert string", () => {
+        it("deep assert success", () => {
+            jsonAssertion.deepAssert("Saru", "Saru");
+        })
+        it("deep assert Failures", () => {
+            let error;
+            try {
+                jsonAssertion.deepAssert("Saru", " Saru ");
+            } catch (err) {
+                error = err.toString();
+            }
+            jsonAssertion.deepAssert(error, "AssertionError: \n\t1 : key -> $ \t\t message: expected \'Saru\' to deeply equal \' Saru \'\n");
+        })
+        it("deep contains success", () => {
+            jsonAssertion.deepContains("$ Saru #", "Saru");
+        })
+        it("deep contains failure", () => {
+            let err;
+            try {
+                jsonAssertion.deepContains("$ saru #", "Saru");
+            } catch (error) {
+                err = error.toString();
+            }
+            jsonAssertion.deepAssert(err, "AssertionError: \n\t1 : key -> $ \t\t message: expected \'$ saru #\' to deeply equal \'Saru\'\n");
+        })
+        it("deep contains success in json", () => {
+            let data = {"key1": "saru", "key2": "renu2 saran"}
+            let data2 = {"key1": "saru", "key2": ".*saran$"}
+            jsonAssertion.deepContains(data, data2);
+        })
+        it("deep contains failure in json", () => {
+            let err;
+            try {
+                let data = {"key1": "saru", "key2": "renu2 saran"}
+                let data2 = {"key1": "saru", "key2": ".*sara$"}
+                jsonAssertion.deepContains(data, data2);
+                
+            } catch (error) {
+                err = JSON.stringify(error.message);
+            }
+            jsonAssertion.deepAssert(err, '"Contains assertion comparison failed for following keys in given json: \\n\\tkey2\\n\\t1 : key -> $.key2 \\t\\t message: expected \'renu2 saran\' to deeply equal \'.*sara$\'\\n"');
+        })
+        it("deep contains check regex in json", () => {
+            jsonAssertion.deepContains("BNZAA2318J", "[A-Z]{5}[0-9]{4}[A-Z]{1}");
+        })
+        it("deep contains check regex in json", () => {
+            let err;
+            try {
+                jsonAssertion.deepContains("BNZAA23189", "[A-Z]{5}[0-9]{4}[A-Z]{1}");
+            } catch (error) {
+              err = JSON.stringify(error.message);
+            }
+            jsonAssertion.deepAssert(err, '"\\n\\t1 : key -> $ \\t\\t message: expected \'BNZAA23189\' to deeply equal \'[A-Z]{5}[0-9]{4}[A-Z]{1}\'\\n"');
+        })
+        it("soft contains check regex in json", () => {
+            let err;
+            try {
+                jsonAssertion.softContains("BNZAA2318A", "[A-Z]{5}[0-9]{4}[A-Z]{1}");
+                jsonAssertion.softContains("BNZAA23189", "[A-Z]{5}[0-9]{4}[A-Z]{1}");
+                jsonAssertion.softContains("BNZAA2318C", "[A-Z]{5}[0-9]{4}[A-Z]{1}");
+                jsonAssertion.softContains("BNZAA23180", "[A-Z]{5}[0-9]{4}[A-Z]{1}");
+                jsonAssertion.softContains("saru is good", "\w is bad");
+                jsonAssertion.softContains("saru is good", "\w is good");
+                jsonAssertion.softContains("saru_1 is good", "\w_\d is good");
+                jsonAssertion.softAssertAll();
+            } catch (error) {
+              err = error.toString();
+            }
+            jsonAssertion.deepContains(err, "message: expected 'BNZAA23189' to deeply equal '[A-Z]{5}[0-9]{4}[A-Z]{1}'");
+            jsonAssertion.deepContains(err, "message: expected 'BNZAA23180' to deeply equal '[A-Z]{5}[0-9]{4}[A-Z]{1}'");
+            jsonAssertion.deepContains(err, "message: expected 'saru is good' to deeply equal '\w is bad'");
+        })
+        it("deep contains check regex in array", () => {
+            jsonAssertion.deepContainsJsonArray([{"id":1, "key": "key_saru1"}, {"id":2, "key": "key_saru2"}], [{"id":1, "key": 'key_\\w+\\d'}, {"id":2, "key": 'key_\\w+\\d'}]);
+        })
+        it("deep contains check regex in array", () => {
+            let err;
+            try {
+                jsonAssertion.deepContainsJsonArray([{"id":1, "key": "key_saru1"}, {"id":2, "key": "key_saru"}], [{"id":1, "key": 'key_\\w+\\d'}, {"id":2, "key": 'key_\\w+\\d'}]);
+            } catch (error) {
+                err = JSON.stringify(error.message);
+            }
+            jsonAssertion.deepAssert(err, '"Contains assertion comparison failed for following keys in given json: \\n\\t0\\n\\t1 : key -> $.0.key \\t\\t message: expected \'key_saru\' to deeply equal \'key_\\\\\\\\w+\\\\\\\\d\'\\n"');
+        })
     })
 })
