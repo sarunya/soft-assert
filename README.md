@@ -25,6 +25,8 @@ Using softAssert, softContains, softAssertKey, softTrue, softAssertKeyAbsence as
 
 softAssertAll - throws the error of all the previous soft assertion's error if any
 
+String comparison in deepContains and softContains of JSON/String/JSON Array also supports *Regex*. Refer Tests for sample
+
 [Sample Test Link](https://github.com/sarunya/soft-assert/blob/master/test/assert-json.js)
 
 # Example : 
